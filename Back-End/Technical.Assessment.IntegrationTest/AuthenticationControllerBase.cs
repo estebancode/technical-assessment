@@ -31,7 +31,7 @@ namespace Technical.Assessment.IntegrationTest
             response.Result.EnsureSuccessStatusCode();
 
             var content = response.Result.Content.ReadAsStringAsync().Result;
-            TokeDto tokenDto = JsonConvert.DeserializeObject<TokeDto>(content);
+            TokenDto tokenDto = JsonConvert.DeserializeObject<TokenDto>(content);
 
             return tokenDto.Token;
         }

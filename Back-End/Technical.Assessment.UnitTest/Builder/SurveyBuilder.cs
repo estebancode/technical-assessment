@@ -4,11 +4,11 @@ using Technical.Assessment.Domain.Entities;
 
 namespace Technical.Assessment.UnitTest.Builder
 {
-    public class SurverBuilder
+    public class SurveyBuilder
     {
         private readonly Survey survey;
 
-        public SurverBuilder()
+        public SurveyBuilder()
         {
             survey = new Survey
             {

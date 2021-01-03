@@ -41,6 +41,7 @@ namespace Technical.Assessment.Api
             builder.RegisterType<RespondentService>().As<IRespondentService>();
             builder.RegisterType<SurveyService>().As<ISurveyService>();
             builder.RegisterType<QuestionService>().As<IQuestionService>();
+            builder.RegisterType<ResponseService>().As<IResponseService>();
 
             return new AutofacServiceProvider(builder.Build());
         }

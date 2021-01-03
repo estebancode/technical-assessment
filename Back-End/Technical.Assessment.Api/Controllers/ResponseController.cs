@@ -13,12 +13,12 @@ namespace Technical.Assessment.Api.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Produces("application/json")]
-    public class QuestionController : ControllerBase
+    public class ResponseController : ControllerBase
     {
         /// <summary>
         /// service's instance
         /// </summary>
-        private readonly IQuestionService service;
+        private readonly IResponseService service;
 
         /// <summary>
         /// Imapper's instance
@@ -29,25 +29,24 @@ namespace Technical.Assessment.Api.Controllers
         /// Constructor's method
         /// </summary>
         /// <param name="service"></param>
-        public QuestionController(IQuestionService service, IMapper _Mapper)
+        public ResponseController(IResponseService service, IMapper _Mapper)
         {
             this.service = service;
             this._Mapper = _Mapper;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] QuestionDto questionDto)
+        public async Task<IActionResult> Post([FromBody] ResponseDto responseDto)
         {
-            var entity = _Mapper.Map<Question>(questionDto);
+            var entity = _Mapper.Map<Response>(responseDto);
             await service.InsertAsync(entity);
             return Ok();
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] QuestionDto questionDto)
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] ResponseDto responseDto)
         {
-            var entity = _Mapper.Map<Question>(questionDto);
-            entity.Id = id;
+            var entity = _Mapper.Map<Response>(responseDto);
             await service.UpdateAsync(entity);
             return Ok();
         }

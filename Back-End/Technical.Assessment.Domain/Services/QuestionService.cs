@@ -21,7 +21,7 @@ namespace Technical.Assessment.Domain.Services
         /// </summary>
         private readonly IRepository<QuestionOrder> repositoryQuestionOrder;
 
-        const string DOES_NOT_EXIST_QUESTION = "Question does not exist";
+        const string QUESTION_DOES_NOT_EXIST = "Question does not exist";
 
         /// <summary>
         /// Constructor's method
@@ -50,12 +50,12 @@ namespace Technical.Assessment.Domain.Services
                 }
                 else
                 {
-                    throw new ArgumentNullException(DOES_NOT_EXIST_QUESTION);
+                    throw new ArgumentNullException(QUESTION_DOES_NOT_EXIST);
                 }
             }
             else
             {
-                throw new ArgumentNullException(DOES_NOT_EXIST_QUESTION);
+                throw new ArgumentNullException(QUESTION_DOES_NOT_EXIST);
             }
         }
 
@@ -102,12 +102,12 @@ namespace Technical.Assessment.Domain.Services
 
                 } else
                 {
-                    throw new ArgumentNullException(DOES_NOT_EXIST_QUESTION);
+                    throw new ArgumentNullException(QUESTION_DOES_NOT_EXIST);
                 }
             }
             else
             {
-                throw new ArgumentNullException(DOES_NOT_EXIST_QUESTION);
+                throw new ArgumentNullException(QUESTION_DOES_NOT_EXIST);
             }
         }
 

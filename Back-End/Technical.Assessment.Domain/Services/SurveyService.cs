@@ -16,7 +16,7 @@ namespace Technical.Assessment.Domain.Services
         /// </summary>
         private readonly IRepository<Survey> repository;
 
-        const string DOES_NOT_EXIST_SURVEY = "Survey does not exist";
+        const string SURVEY_DOES_NOT_EXIST = "Survey does not exist";
 
         public SurveyService(IRepository<Survey> repository)
         {
@@ -33,7 +33,7 @@ namespace Technical.Assessment.Domain.Services
             }
             else
             {
-                throw new ArgumentNullException(DOES_NOT_EXIST_SURVEY);
+                throw new ArgumentNullException(SURVEY_DOES_NOT_EXIST);
             }
         }
 
@@ -65,7 +65,7 @@ namespace Technical.Assessment.Domain.Services
             }
             else
             {
-                throw new ArgumentNullException(DOES_NOT_EXIST_SURVEY);
+                throw new ArgumentNullException(SURVEY_DOES_NOT_EXIST);
             }
         }
 

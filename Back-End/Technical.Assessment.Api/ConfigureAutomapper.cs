@@ -13,7 +13,11 @@ namespace Technical.Assessment.Api
                 .ForMember(x => x.Password, opt => opt.MapFrom(x=> x.HashedPassword))
                 .ReverseMap();
             CreateMap<Survey, SurveyDto>().ReverseMap();
-            CreateMap<Question, QuestionDto>().ReverseMap();
+            CreateMap<Question, QuestionDto>()
+                .ForPath(x => x.QuestionOrder.Order, opt => opt.MapFrom(x => x.Order))
+                .ForPath(x => x.QuestionOrder.SurverId, opt => opt.MapFrom(x => x.SurverId))
+                .ReverseMap();
+            CreateMap<Response, ResponseDto>().ReverseMap();
         }
     }
 }

@@ -33,5 +33,7 @@ namespace Technical.Assessment.Domain.Entities
 
         [ForeignKey("RespondentId")]
         public Respondent Respondent { get; set; }
+
+        public int SurveyId { get; set; }
     }
 }

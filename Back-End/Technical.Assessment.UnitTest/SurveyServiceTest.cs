@@ -20,14 +20,14 @@ namespace Technical.Assessment.UnitTest
     {
         IRepository<Survey> _Repository;
         ISurveyService _SurveyService;
-        SurverBuilder builder;
+        SurveyBuilder builder;
 
         [TestInitialize]
         public void Initialize()
         {
             _Repository = Substitute.For<IRepository<Survey>>();
             _SurveyService = new SurveyService(_Repository);
-            builder = new SurverBuilder();
+            builder = new SurveyBuilder();
         }
 
         [TestMethod]

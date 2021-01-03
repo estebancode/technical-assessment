@@ -42,6 +42,8 @@ namespace Technical.Assessment.Infrastructure.Context
 
                 modelBuilder.Entity<Question>().Ignore(c => c.Order);
                 modelBuilder.Entity<Question>().Ignore(c => c.SurverId);
+
+                modelBuilder.Entity<Response>().Ignore(c => c.SurveyId);
             }
         }
 

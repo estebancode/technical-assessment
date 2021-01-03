@@ -36,17 +36,17 @@ namespace Technical.Assessment.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] SurveyDto respondentDto)
+        public async Task<IActionResult> Post([FromBody] SurveyDto surveyDto)
         {
-            var entity = _Mapper.Map<Survey>(respondentDto);
+            var entity = _Mapper.Map<Survey>(surveyDto);
             await service.InsertAsync(entity);
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] SurveyDto respondentDto)
+        public async Task<IActionResult> Put(int id, [FromBody] SurveyDto surveyDto)
         {
-            var entity = _Mapper.Map<Survey>(respondentDto);
+            var entity = _Mapper.Map<Survey>(surveyDto);
             entity.Id = id;
             await service.UpdateAsync(entity);
             return Ok();

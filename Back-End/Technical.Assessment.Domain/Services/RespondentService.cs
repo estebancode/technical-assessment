@@ -22,7 +22,7 @@ namespace Technical.Assessment.Domain.Services
 
         const string INVALID_USER = "Invalid username or password";
         const string EXIST_USER = "Username is already exist";
-        const string DOES_NOT_EXIST_USER = "Username does not exist";
+        const string USER_DOES_NOT_EXIST = "Username does not exist";
 
         /// <summary>
         /// constructor's method
@@ -63,7 +63,7 @@ namespace Technical.Assessment.Domain.Services
                 await this.repository.SaveChangesAsync().ConfigureAwait(false);
             } else
             {
-                throw new ArgumentNullException(DOES_NOT_EXIST_USER);
+                throw new ArgumentNullException(USER_DOES_NOT_EXIST);
             }
         }
 
@@ -104,7 +104,7 @@ namespace Technical.Assessment.Domain.Services
             }
             else
             {
-                throw new ArgumentNullException(DOES_NOT_EXIST_USER);
+                throw new ArgumentNullException(USER_DOES_NOT_EXIST);
             }
         }
 
