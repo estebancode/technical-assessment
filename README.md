@@ -78,7 +78,6 @@ Type: Hexagonal
  ## Missing points
 
  * "When any mutation like Insert, Update or Delete is performed on the question_order table, you should correctly rearrange the question’s order in the survey. Keep in mind this should be reflected on that question_order table."
- * "You should implement a method to change a question’s order (position) in the survey, for instance". This point does not work well.
 
  ## Enhancement opportunities
 

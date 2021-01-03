@@ -111,7 +111,7 @@ namespace Technical.Assessment.Domain.Services
             }
         }
 
-        private void Move(QuestionOrder questionOrder, int newOrder, IEnumerable<QuestionOrder> questionOrders)
+        private IEnumerable<QuestionOrder> Move(QuestionOrder questionOrder, int newOrder, IEnumerable<QuestionOrder> questionOrders)
         {
             var orders = questionOrders.Select(c => c.Order).Where(x => x != newOrder).ToList();
             var itemsToOrder = questionOrders.Where(x => x.Order != questionOrder.Order).ToList();
@@ -121,7 +121,7 @@ namespace Technical.Assessment.Domain.Services
                 new QuestionOrder()
                 {
                     QuestionId = questionOrder.QuestionId,
-                    SurverId = questionOrder.QuestionId,
+                    SurverId = questionOrder.SurverId,
                     Order = newOrder
                 }
             };
@@ -132,6 +132,7 @@ namespace Technical.Assessment.Domain.Services
                 currentItem.Order = orders[i];
                 questionOrdersAux.Add(currentItem);
             }
+            return questionOrdersAux;
         }
 
         public void Dispose()
@@ -146,14 +147,14 @@ namespace Technical.Assessment.Domain.Services
             this.repositoryQuestionOrder.Dispose();
         }
 
-        public async Task<IEnumerable<QuestionOrder>> ChangeOrderAsync(int SurveyId, int QuestionId, int Order)
+        public async Task<IEnumerable<QuestionOrder>> ChangeOrderAsync(int SurveyId, int QuestionId, int order)
         {
             IEnumerable<QuestionOrder> questionOrders = await repositoryQuestionOrder.GetAllAsync(null,null,null, false).ConfigureAwait(false);
             QuestionOrder questionOrder = questionOrders.FirstOrDefault(c=> c.SurverId == SurveyId && c.QuestionId == QuestionId);
             if (questionOrder != null)
             {
-                Move(questionOrder,Order,questionOrders);
-                this.repositoryQuestionOrder.UpdateRange(questionOrders);
+                IEnumerable<QuestionOrder> newQuestionOrders = Move(questionOrder,order,questionOrders);
+                this.repositoryQuestionOrder.UpdateRange(newQuestionOrders);
                 await this.repositoryQuestionOrder.SaveChangesAsync().ConfigureAwait(false);
                 return questionOrders;
             }
