@@ -111,6 +111,29 @@ namespace Technical.Assessment.Domain.Services
             }
         }
 
+        private void Move(QuestionOrder questionOrder, int newOrder, IEnumerable<QuestionOrder> questionOrders)
+        {
+            var orders = questionOrders.Select(c => c.Order).Where(x => x != newOrder).ToList();
+            var itemsToOrder = questionOrders.Where(x => x.Order != questionOrder.Order).ToList();
+
+            List<QuestionOrder> questionOrdersAux = new List<QuestionOrder>
+            {
+                new QuestionOrder()
+                {
+                    QuestionId = questionOrder.QuestionId,
+                    SurverId = questionOrder.QuestionId,
+                    Order = newOrder
+                }
+            };
+
+            for (int i = 0; i < itemsToOrder.Count; i++)
+            {
+                var currentItem = itemsToOrder[i];
+                currentItem.Order = orders[i];
+                questionOrdersAux.Add(currentItem);
+            }
+        }
+
         public void Dispose()
         {
             Dispose(true);
@@ -121,6 +144,23 @@ namespace Technical.Assessment.Domain.Services
         {
             this.repositoryQuestion.Dispose();
             this.repositoryQuestionOrder.Dispose();
+        }
+
+        public async Task<IEnumerable<QuestionOrder>> ChangeOrderAsync(int SurveyId, int QuestionId, int Order)
+        {
+            IEnumerable<QuestionOrder> questionOrders = await repositoryQuestionOrder.GetAllAsync(null,null,null, false).ConfigureAwait(false);
+            QuestionOrder questionOrder = questionOrders.FirstOrDefault(c=> c.SurverId == SurveyId && c.QuestionId == QuestionId);
+            if (questionOrder != null)
+            {
+                Move(questionOrder,Order,questionOrders);
+                this.repositoryQuestionOrder.UpdateRange(questionOrders);
+                await this.repositoryQuestionOrder.SaveChangesAsync().ConfigureAwait(false);
+                return questionOrders;
+            }
+            else
+            {
+                throw new ArgumentNullException(QUESTION_DOES_NOT_EXIST);
+            }
         }
     }
 }

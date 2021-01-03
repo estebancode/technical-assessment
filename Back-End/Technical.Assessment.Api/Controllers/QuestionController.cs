@@ -64,5 +64,18 @@ namespace Technical.Assessment.Api.Controllers
             await service.DeleteAsync(id);
             return Ok();
         }
+
+        /// <summary>
+        /// Change the position of the question
+        /// </summary>
+        /// <param name="surveyId"></param>
+        /// <param name="questionId"></param>
+        /// <param name="newOrder"></param>
+        /// <returns></returns>
+        [HttpPut("ChangeOrder")]
+        public async Task<IActionResult> ChangeOrderAsync(int surveyId,int questionId, int newOrder)
+        {
+            return Ok(await service.ChangeOrderAsync(surveyId, questionId, newOrder));
+        }
     }
 }

@@ -48,5 +48,14 @@ namespace Technical.Assessment.Domain.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         Task DeleteAsync(int id);
+
+        /// <summary>
+        /// Change order of the question
+        /// </summary>
+        /// <param name="SurveyId"></param>
+        /// <param name="QuestionId"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        Task<IEnumerable<QuestionOrder>> ChangeOrderAsync(int SurveyId, int QuestionId,int order);
     }
 }
