@@ -34,6 +34,11 @@ namespace Technical.Assessment.Api.Controllers
             this._Mapper = _Mapper;
         }
 
+        /// <summary>
+        /// Authenticate an user
+        /// </summary>
+        /// <param name="userDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Authenticate([FromBody] UserDto userDto)
         {

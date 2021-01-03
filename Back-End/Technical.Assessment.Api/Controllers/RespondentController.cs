@@ -33,6 +33,11 @@ namespace Technical.Assessment.Api.Controllers
             this._Mapper = _Mapper;
         }
 
+        /// <summary>
+        /// Create an user
+        /// </summary>
+        /// <param name="respondentDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RespondentDto respondentDto)
         {
