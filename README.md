@@ -8,10 +8,12 @@ These instructions will get you a copy of the project up and running on your loc
 ## Prerequisites
 
 After cloning the repository:
- * make sure to open the project with __*visual studio 2019*__ or check if you have to install __*Dotnet 3.1*__.
- * make sure that you have a good connection to internet (to use external services).
- * make sure that you set the project __*Technical.Assessment.Api*__ like __*"Set as Startup Project"*__ .
- * make sure that you have the path of __*Swagger*__ in the file __*launchSettings.json*__ .
+ * Make sure to open the project with __*visual studio 2019*__ or check if you have to install __*Dotnet 3.1*__.
+ * Make sure that you have a good connection to internet (to use external services).
+ * In case that you want to change the connection string to make sure to change it 
+   in the file appSettings.json and run the migration with the command __*Update-database*__ in the  Package manage console.
+ * Make sure that you set the project __*Technical.Assessment.Api*__ like __*"Set as Startup Project"*__ .
+ * Make sure that you have the path of __*Swagger*__ in the file __*launchSettings.json*__ .
     ```json
         "profiles": {
             "IIS Express": {
