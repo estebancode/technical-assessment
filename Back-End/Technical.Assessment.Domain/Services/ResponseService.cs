@@ -20,6 +20,11 @@ namespace Technical.Assessment.Domain.Services
         /// </summary>
         private readonly IRepository<SurveyResponse> repositorySurveyResponse;
 
+        /// <summary>
+        /// response report's instance
+        /// </summary>
+        private readonly IResponseReportRepository repositoryResponseReport;
+
         const string RESPONSE_DOES_NOT_EXIST = "Response does not exist";
 
         /// <summary>
@@ -27,8 +32,11 @@ namespace Technical.Assessment.Domain.Services
         /// </summary>
         /// <param name="repositoryResponse"></param>
         /// <param name="repositorySurveyResponse"></param>
-        public ResponseService(IRepository<Response> repositoryResponse, IRepository<SurveyResponse> repositorySurveyResponse)
+        public ResponseService(IRepository<Response> repositoryResponse,
+            IRepository<SurveyResponse> repositorySurveyResponse,
+            IResponseReportRepository repositoryResponseReport)
         {
+            this.repositoryResponseReport = repositoryResponseReport;
             this.repositoryResponse = repositoryResponse;
             this.repositorySurveyResponse = repositorySurveyResponse;
         }
@@ -110,6 +118,11 @@ namespace Technical.Assessment.Domain.Services
         {
             this.repositoryResponse.Dispose();
             this.repositorySurveyResponse.Dispose();
+        }
+
+        public IEnumerable<ResponseReport> GetAllBySurveyIdAndUser(int surveyId, int respondentId)
+        {
+            return this.repositoryResponseReport.GetAllBySurveyIdAndUser(surveyId, respondentId);
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Diagnostics;
 using Technical.Assessment.Api.Extensions;
 using Technical.Assessment.Domain.Interfaces;
 using Technical.Assessment.Domain.Services;
+using Technical.Assessment.Infrastructure.Implementations;
 
 #endregion
 
@@ -42,6 +43,7 @@ namespace Technical.Assessment.Api
             builder.RegisterType<SurveyService>().As<ISurveyService>();
             builder.RegisterType<QuestionService>().As<IQuestionService>();
             builder.RegisterType<ResponseService>().As<IResponseService>();
+            builder.RegisterType<ResponseReportRepository>().As<IResponseReportRepository>();
 
             return new AutofacServiceProvider(builder.Build());
         }

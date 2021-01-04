@@ -49,5 +49,7 @@ namespace Technical.Assessment.Domain.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         Task DeleteAsync(int id);
+
+        IEnumerable<ResponseReport> GetAllBySurveyIdAndUser(int surveyId, int respondentId);
     }
 }

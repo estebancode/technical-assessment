@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Technical.Assessment.Infrastructure.Context;
 
 namespace Technical.Assessment.Infrastructure.Migrations
 {
     [DbContext(typeof(TechnicalAssessmentContext))]
-    partial class TechnicalAssessmentContextModelSnapshot : ModelSnapshot
+    [Migration("20210103235158_ResponsesReport_SP")]
+    partial class ResponsesReport_SP
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

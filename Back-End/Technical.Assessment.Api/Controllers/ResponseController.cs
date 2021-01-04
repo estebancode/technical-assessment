@@ -51,10 +51,10 @@ namespace Technical.Assessment.Api.Controllers
             return Ok();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpGet("GetGetAllBySurveyIdAndUser")]
+        public IActionResult GetGetAllBySurveyIdAndUser(int surveyId,int respondentId)
         {
-            return Ok(await service.GetAllAsync(null, null, null, false));
+            return Ok(service.GetAllBySurveyIdAndUser(surveyId,respondentId));
         }
 
         [HttpDelete("{id}")]

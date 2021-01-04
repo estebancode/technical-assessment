@@ -21,6 +21,7 @@ namespace Technical.Assessment.Infrastructure.Context
         public DbSet<QuestionOrder> QuestionOrders { get; set; }
         public DbSet<SurveyResponse> SurveyResponses { get; set; }
         public DbSet<Response> Responses { get; set; }
+        public DbSet<ResponseReport> ResponseReports { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
